@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body class="bg-body-tertiary">
-    <div id="appLayoutWrapper" class="d-flex min-vh-100 position-relative overflow-x-hidden">
+    <div id="appLayoutWrapper" class="position-relative overflow-x-hidden min-vh-100">
         <?php require __DIR__ . '/sidebar.php'; ?>
-        <div class="d-flex flex-column flex-grow-1 min-w-0">
+        <div class="d-flex flex-column app-content-column">
             <?php 
                 $isAppLayout = true; 
                 require __DIR__ . '/header.php'; 

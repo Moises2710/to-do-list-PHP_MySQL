@@ -1,5 +1,5 @@
 <?php if (isset($_SESSION['user_id'])): ?>
-<aside id="appSidebar" class="app-sidebar bg-white border-end d-flex flex-column flex-shrink-0 sticky-top">
+<aside id="appSidebar" class="app-sidebar bg-white border-end d-flex flex-column flex-shrink-0">
     <div class="sidebar-header-wrapper d-flex align-items-center justify-content-between px-3 border-bottom position-relative" style="height: 65px;">
         <a href="/dashboard" class="d-flex align-items-center gap-2 text-decoration-none text-dark fw-bold me-2">
             <span class="fs-5 brand-text text-truncate">Coronado To do List</span>
