@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # If requested resource is not a directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # If requested resource is not a regular file
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    # Route all requests through Front Controller index.php
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>

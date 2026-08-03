@@ -1,0 +1,30 @@
+# Composer Dependencies
+/vendor/
+
+# Environment Variables & Secret Files
+.env
+.env.local
+.env.*.local
+
+# IDE & Editor Configurations
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Logs & Temporary Files
+*.log
+composer.phar
+
+# MySQL / Database Exports & Backup Files
+*.sql.gz
+*.bak
