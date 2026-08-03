@@ -30,6 +30,6 @@ class DashboardController
         require __DIR__ . '/../Views/dashboard/index.php';
         $content = ob_get_clean();
 
-        require __DIR__ . '/../Views/layouts/main.php';
+        require __DIR__ . '/../Views/layouts/app.php';
     }
 }
