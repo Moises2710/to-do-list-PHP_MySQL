@@ -12,12 +12,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100 bg-body-tertiary">
-    <?php require __DIR__ . '/header.php'; ?>
-    <main class="flex-shrink-0">
-        <?= $content; ?>
-    </main>
-    <?php require __DIR__ . '/footer.php'; ?>
+<body class="bg-body-tertiary">
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <div id="appLayoutWrapper" class="d-flex min-vh-100 position-relative overflow-x-hidden">
+            <?php require __DIR__ . '/sidebar.php'; ?>
+            <div class="d-flex flex-column flex-grow-1 min-w-0">
+                <?php require __DIR__ . '/header.php'; ?>
+                <main class="flex-grow-1 page-main-content">
+                    <?= $content; ?>
+                </main>
+                <?php require __DIR__ . '/footer.php'; ?>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="d-flex flex-column min-vh-100">
+            <?php require __DIR__ . '/header.php'; ?>
+            <main class="flex-grow-1">
+                <?= $content; ?>
+            </main>
+            <?php require __DIR__ . '/footer.php'; ?>
+        </div>
+    <?php endif; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <script src="/assets/js/sidebar.js"></script>
+    <?php endif; ?>
 </body>
 </html>
