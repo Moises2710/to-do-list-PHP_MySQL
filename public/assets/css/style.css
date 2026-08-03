@@ -3,6 +3,7 @@
     --bg-gradient: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15), rgba(255, 255, 255, 0));
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
+    --sidebar-width: 270px;
 }
 
 body {
@@ -17,10 +18,12 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 
 /* Header Styling */
 .custom-header {
-    background: rgba(255, 255, 255, 0.85);
+    height: 65px;
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: all 0.3s ease;
+    z-index: 1040;
 }
 
 .brand-icon-wrapper {
@@ -60,6 +63,104 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     opacity: 0.95;
     transform: translateY(-1px);
     box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4) !important;
+}
+
+/* App Shell Sidebar Layout & Dynamic Movement */
+.app-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.02);
+    z-index: 1030;
+}
+
+/* Sidebar Collapsed State */
+.sidebar-collapsed .app-sidebar {
+    margin-left: calc(-1 * var(--sidebar-width));
+}
+
+/* Collapsed Header Brand & Expand Button */
+#appLayoutWrapper:not(.sidebar-collapsed) .navbar-brand-collapsed {
+    display: none !important;
+}
+
+.sidebar-collapsed .navbar-brand-collapsed {
+    display: flex !important;
+    animation: fadeIn 0.3s ease;
+}
+
+.sidebar-expand-nav-btn {
+    width: 36px;
+    height: 36px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-expand-nav-btn:hover {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5 !important;
+    transform: scale(1.08);
+}
+
+/* Sidebar Header & Hover-Revealed Collapse Button */
+.sidebar-header-wrapper {
+    height: 65px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-header-wrapper:hover {
+    background-color: #f8fafc;
+}
+
+.sidebar-collapse-btn {
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.sidebar-header-wrapper:hover .sidebar-collapse-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sidebar-collapse-btn:hover {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border-color: #4f46e5 !important;
+    transform: scale(1.08);
+}
+
+/* Sidebar Navigation Items */
+.app-sidebar .nav-link {
+    color: #475569;
+    transition: all 0.2s ease;
+}
+
+.app-sidebar .nav-link:hover {
+    color: #4f46e5;
+    background-color: #f1f5f9;
+    transform: translateX(3px);
+}
+
+.app-sidebar .nav-link.active {
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* Main Content Area */
+.page-main-content {
+    transition: margin 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 /* Hero Section */
