@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg container-fluid px-4 h-100">
         <div class="d-flex justify-content-between align-items-center w-100">
             <div class="d-flex align-items-center">
-                <?php if (isset($_SESSION['user_id'])): ?>
+                <?php if (isset($isAppLayout) && $isAppLayout): ?>
                     <div id="navbarCollapsedBrand" class="d-flex align-items-center gap-2 navbar-brand-collapsed">
                         <button id="sidebarExpandBtn" class="btn btn-sm btn-outline-secondary rounded-circle sidebar-expand-nav-btn d-flex align-items-center justify-content-center" title="Show Sidebar">
                             <i class="bi bi-layout-sidebar fs-5"></i>
@@ -24,12 +24,12 @@
                 <?php endif; ?>
             </div>
             <div class="d-flex align-items-center gap-3 ms-auto">
-                <?php if (isset($_SESSION['user_id'])): ?>
+                <?php if (isset($isAppLayout) && $isAppLayout): ?>
                     <div class="d-flex align-items-center gap-2 px-3 py-1 bg-light rounded-pill border">
                         <i class="bi bi-person-circle text-primary fs-5"></i>
                         <span class="fw-semibold text-dark"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User'); ?></span>
                     </div>
-                    <a href="/logout" class="btn btn-danger px-3 rounded-pill fw-semibold shadow-sm">
+                    <a href="/logout" class="btn btn-outline-danger px-3 rounded-pill fw-semibold shadow-sm">
                         <i class="bi bi-box-arrow-right me-1"></i> Logout
                     </a>
                 <?php else: ?>
