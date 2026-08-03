@@ -25,9 +25,6 @@
             </div>
             <div class="d-flex align-items-center gap-3 ms-auto">
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="/dashboard" class="btn btn-outline-primary px-3 rounded-pill fw-semibold nav-link-custom">
-                        <i class="bi bi-speedometer2 me-1"></i> Dashboard
-                    </a>
                     <div class="d-flex align-items-center gap-2 px-3 py-1 bg-light rounded-pill border">
                         <i class="bi bi-person-circle text-primary fs-5"></i>
                         <span class="fw-semibold text-dark"><?= htmlspecialchars($_SESSION['user_name'] ?? 'User'); ?></span>
