@@ -1,5 +1,4 @@
 <div class="container py-5">
-    <!-- Welcome Header Banner -->
     <div class="card border-0 shadow-sm rounded-4 bg-primary text-white mb-4 p-4 position-relative overflow-hidden" style="background: var(--primary-gradient) !important;">
         <div class="d-flex justify-content-between align-items-center position-relative z-1">
             <div>
@@ -14,8 +13,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Summary Stats Cards -->
     <div class="row g-4 mb-5">
         <div class="col-md-4">
             <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
@@ -30,7 +27,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
                 <div class="d-flex align-items-center gap-3">
@@ -44,7 +40,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
                 <div class="d-flex align-items-center gap-3">
@@ -59,8 +54,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Task List Container Placeholder -->
     <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h4 class="fw-bold mb-0 text-dark"><i class="bi bi-journal-text me-2 text-primary"></i> My Tasks</h4>
@@ -68,7 +61,6 @@
                 <i class="bi bi-plus-lg me-1"></i> Save Task
             </button>
         </div>
-
         <div class="text-center py-5 text-muted">
             <i class="bi bi-check2-circle display-1 text-primary opacity-50 mb-3 d-block"></i>
             <h5 class="fw-bold text-dark">No tasks created yet</h5>
@@ -79,8 +71,6 @@
         </div>
     </div>
 </div>
-
-<!-- Modal Placeholder for Creating Tasks -->
 <div class="modal fade" id="newTaskModal" tabindex="-1" aria-labelledby="newTaskModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow-lg">
