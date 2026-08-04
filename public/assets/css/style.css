@@ -16,7 +16,6 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     font-family: var(--font-heading);
 }
 
-/* Header Styling */
 #appLayoutWrapper {
     display: flex !important;
     min-height: 100vh;
@@ -72,7 +71,6 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4) !important;
 }
 
-/* App Shell Sidebar Layout & Dynamic Movement */
 .app-sidebar {
     width: var(--sidebar-width);
     flex-shrink: 0;
@@ -92,12 +90,10 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     flex-direction: column;
 }
 
-/* Sidebar Collapsed State */
 .sidebar-collapsed .app-sidebar {
     margin-left: calc(-1 * var(--sidebar-width));
 }
 
-/* Collapsed Header Brand & Expand Button */
 #appLayoutWrapper:not(.sidebar-collapsed) .navbar-brand-collapsed {
     display: none !important;
 }
@@ -120,7 +116,6 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     transform: scale(1.08);
 }
 
-/* Sidebar Header & Hover-Revealed Collapse Button */
 .sidebar-header-wrapper {
     height: 65px;
     transition: background-color 0.2s ease;
@@ -150,7 +145,6 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     transform: scale(1.08);
 }
 
-/* Sidebar Navigation Items */
 .app-sidebar .nav-link {
     color: #475569;
     transition: all 0.2s ease;
@@ -168,7 +162,6 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
 }
 
-/* Main Content Area */
 .page-main-content {
     transition: margin 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -232,12 +225,65 @@ select option.priority-option-high {
     font-weight: 600;
 }
 
+/* Flatpickr Custom Modern Theme Overrides */
+.flatpickr-calendar {
+    border-radius: 16px !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #e2e8f0 !important;
+    font-family: var(--font-body) !important;
+    padding: 8px !important;
+}
+
+.flatpickr-day.selected, 
+.flatpickr-day.startRange, 
+.flatpickr-day.endRange, 
+.flatpickr-day.selected.inRange, 
+.flatpickr-day.startRange.inRange, 
+.flatpickr-day.endRange.inRange, 
+.flatpickr-day.selected:focus, 
+.flatpickr-day.startRange:focus, 
+.flatpickr-day.endRange:focus, 
+.flatpickr-day.selected:hover, 
+.flatpickr-day.startRange:hover, 
+.flatpickr-day.endRange:hover, 
+.flatpickr-day.selected.prevMonthDay, 
+.flatpickr-day.startRange.prevMonthDay, 
+.flatpickr-day.endRange.prevMonthDay, 
+.flatpickr-day.selected.nextMonthDay, 
+.flatpickr-day.startRange.nextMonthDay, 
+.flatpickr-day.endRange.nextMonthDay {
+    background: var(--primary-gradient) !important;
+    border-color: #4f46e5 !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+}
+
+.flatpickr-day.today {
+    border-color: #4f46e5 !important;
+    font-weight: 700 !important;
+    color: #4f46e5 !important;
+}
+
+.flatpickr-day:hover {
+    background: #f1f5f9 !important;
+    border-radius: 10px !important;
+}
+
+.flatpickr-months .flatpickr-month {
+    color: #0f172a !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+    font-weight: 700 !important;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateX(-8px); }
     to { opacity: 1; transform: translateX(0); }
 }
 
-/* Hero Section */
 .hero-section {
     background: var(--bg-gradient);
 }
@@ -254,7 +300,6 @@ select option.priority-option-high {
     box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1);
 }
 
-/* Description Section */
 .description-section {
     border-top: 1px solid rgba(226, 232, 240, 0.8);
     border-bottom: 1px solid rgba(226, 232, 240, 0.8);
@@ -266,7 +311,6 @@ select option.priority-option-high {
     color: #475569 !important;
 }
 
-/* Functionality Section */
 .feature-icon-box {
     background: var(--primary-gradient) !important;
     width: 60px;
@@ -290,7 +334,6 @@ select option.priority-option-high {
     background-color: #faf5ff;
 }
 
-/* Cat Image Container */
 .image-wrapper {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-color: rgba(226, 232, 240, 0.7) !important;
@@ -306,7 +349,6 @@ select option.priority-option-high {
     max-height: 420px;
 }
 
-/* Footer Styling */
 .custom-footer {
     background-color: #ffffff;
 }

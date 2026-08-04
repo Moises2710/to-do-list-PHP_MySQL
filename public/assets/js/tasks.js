@@ -7,6 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
 
     let taskToDeleteId = null;
+    let createDatePicker = null;
+    let editDatePicker = null;
+
+    // Flatpickr Modern Date Picker Initialization
+    if (typeof flatpickr !== 'undefined') {
+        const flatpickrConfig = {
+            dateFormat: 'Y-m-d',
+            altInput: true,
+            altFormat: 'M j, Y',
+            minDate: 'today',
+            animate: true
+        };
+
+        const createInput = document.getElementById('create_due_date');
+        if (createInput) {
+            createDatePicker = flatpickr(createInput, flatpickrConfig);
+        }
+
+        const editInput = document.getElementById('edit_due_date');
+        if (editInput) {
+            editDatePicker = flatpickr(editInput, {
+                ...flatpickrConfig,
+                minDate: null
+            });
+        }
+    }
 
     // Toast alert helper
     function showAlert(message, type = 'success') {
@@ -84,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (result.success) {
                     showAlert(result.message, 'success');
                     createTaskForm.reset();
+                    if (createDatePicker) createDatePicker.clear();
+
                     const createPriority = document.getElementById('create_priority');
                     if (createPriority) updatePrioritySelectColor(createPriority);
 
@@ -148,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('edit_task_id').value = button.dataset.taskId || '';
             document.getElementById('edit_title').value = button.dataset.taskTitle || '';
             document.getElementById('edit_description').value = button.dataset.taskDescription || '';
+            
             const editPriority = document.getElementById('edit_priority');
             if (editPriority) {
                 editPriority.value = button.dataset.taskPriority || 'medium';
@@ -155,7 +184,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             document.getElementById('edit_status').value = button.dataset.taskStatus || 'pending';
-            document.getElementById('edit_due_date').value = button.dataset.taskDueDate || '';
+            
+            const dueDate = button.dataset.taskDueDate || '';
+            if (editDatePicker) {
+                editDatePicker.setDate(dueDate);
+            } else {
+                document.getElementById('edit_due_date').value = dueDate;
+            }
         });
     }
 
