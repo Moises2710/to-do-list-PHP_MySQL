@@ -3,10 +3,7 @@
         <div class="d-flex justify-content-between align-items-center w-100">
             <div class="d-flex align-items-center">
                 <?php if (isset($isAppLayout) && $isAppLayout): ?>
-                    <div id="navbarCollapsedBrand" class="d-flex align-items-center gap-2 navbar-brand-collapsed">
-                        <button id="sidebarExpandBtn" class="btn btn-sm btn-outline-secondary rounded-circle sidebar-expand-nav-btn d-flex align-items-center justify-content-center" title="Show Sidebar">
-                            <i class="bi bi-layout-sidebar fs-5"></i>
-                        </button>
+                    <div class="d-flex align-items-center gap-2">
                         <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-primary brand-title mb-0" href="/dashboard">
                             <span class="brand-icon-wrapper rounded-3 d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
                                 <i class="bi bi-check2-square text-white fs-5"></i>

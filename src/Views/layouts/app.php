@@ -17,8 +17,6 @@
 <body class="bg-body-tertiary">
 
     <div id="appLayoutWrapper" class="d-flex position-relative overflow-x-hidden min-vh-100">
-        <?php require __DIR__ . '/sidebar.php'; ?>
-
         <div class="d-flex flex-column app-content-column">
             <?php 
                 $isAppLayout = true; 
@@ -35,6 +33,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="/assets/js/sidebar.js"></script>
 </body>
 </html>
