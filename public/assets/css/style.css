@@ -173,7 +173,65 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     transition: margin 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animations */
+/* Priority Badges */
+.priority-badge-low {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+.priority-badge-medium {
+    background-color: #fef3c7 !important;
+    color: #b45309 !important;
+    border: 1px solid #fde68a !important;
+}
+
+.priority-badge-high {
+    background-color: #fee2e2 !important;
+    color: #b91c1c !important;
+    border: 1px solid #fca5a5 !important;
+}
+
+/* Dynamic Priority Select Input Background Colors */
+select.priority-select-input {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    font-weight: 600;
+}
+
+select.priority-select-input.priority-select-low {
+    background-color: #f1f5f9 !important;
+    color: #475569 !important;
+    border-color: #cbd5e1 !important;
+}
+
+select.priority-select-input.priority-select-medium {
+    background-color: #fef3c7 !important;
+    color: #b45309 !important;
+    border-color: #fde68a !important;
+}
+
+select.priority-select-input.priority-select-high {
+    background-color: #fee2e2 !important;
+    color: #b91c1c !important;
+    border-color: #fca5a5 !important;
+}
+
+select option.priority-option-low {
+    color: #475569;
+    background-color: #f8fafc;
+}
+
+select option.priority-option-medium {
+    color: #b45309;
+    background-color: #fffbeb;
+}
+
+select option.priority-option-high {
+    color: #b91c1c;
+    background-color: #fef2f2;
+    font-weight: 600;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateX(-8px); }
     to { opacity: 1; transform: translateX(0); }

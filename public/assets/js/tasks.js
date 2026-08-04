@@ -42,6 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (completedEl) completedEl.textContent = metrics.completed;
     }
 
+    // Dynamic Priority Select Background Color Updater
+    function updatePrioritySelectColor(selectEl) {
+        if (!selectEl) return;
+        selectEl.classList.add('priority-select-input');
+        selectEl.classList.remove('priority-select-low', 'priority-select-medium', 'priority-select-high');
+        
+        const priority = selectEl.value;
+        if (priority === 'low') {
+            selectEl.classList.add('priority-select-low');
+        } else if (priority === 'high') {
+            selectEl.classList.add('priority-select-high');
+        } else {
+            selectEl.classList.add('priority-select-medium');
+        }
+    }
+
+    // Initialize & listen for changes on priority select dropdowns
+    const prioritySelects = document.querySelectorAll('.priority-select-input, #create_priority, #edit_priority');
+    prioritySelects.forEach(selectEl => {
+        updatePrioritySelectColor(selectEl);
+        selectEl.addEventListener('change', () => updatePrioritySelectColor(selectEl));
+    });
+
     // Handle Create Task Form Submission
     if (createTaskForm) {
         createTaskForm.addEventListener('submit', async (e) => {
@@ -61,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (result.success) {
                     showAlert(result.message, 'success');
                     createTaskForm.reset();
+                    const createPriority = document.getElementById('create_priority');
+                    if (createPriority) updatePrioritySelectColor(createPriority);
 
                     const modal = bootstrap.Modal.getInstance(newTaskModalEl);
                     if (modal) modal.hide();
@@ -114,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Populate Edit Task Modal
+    // Populate Edit Task Modal & Update Priority Background
     if (editTaskModalEl) {
         editTaskModalEl.addEventListener('show.bs.modal', (e) => {
             const button = e.relatedTarget;
@@ -123,7 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('edit_task_id').value = button.dataset.taskId || '';
             document.getElementById('edit_title').value = button.dataset.taskTitle || '';
             document.getElementById('edit_description').value = button.dataset.taskDescription || '';
-            document.getElementById('edit_priority').value = button.dataset.taskPriority || 'medium';
+            const editPriority = document.getElementById('edit_priority');
+            if (editPriority) {
+                editPriority.value = button.dataset.taskPriority || 'medium';
+                updatePrioritySelectColor(editPriority);
+            }
+
             document.getElementById('edit_status').value = button.dataset.taskStatus || 'pending';
             document.getElementById('edit_due_date').value = button.dataset.taskDueDate || '';
         });

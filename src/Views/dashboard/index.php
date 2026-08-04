@@ -106,14 +106,14 @@
                                     <h5 class="fw-bold text-dark mb-0"><?= htmlspecialchars($task['title']); ?></h5>
                                     
                                     <?php 
-                                        $priorityClass = match($task['priority']) {
-                                            'high' => 'bg-danger-subtle text-danger border-danger-subtle',
-                                            'low' => 'bg-info-subtle text-info border-info-subtle',
-                                            default => 'bg-secondary-subtle text-secondary border-secondary-subtle',
+                                        $priorityBadge = match($task['priority']) {
+                                            'high' => ['class' => 'priority-badge-high', 'icon' => 'text-danger'],
+                                            'low' => ['class' => 'priority-badge-low', 'icon' => 'text-secondary'],
+                                            default => ['class' => 'priority-badge-medium', 'icon' => 'text-warning-emphasis'],
                                         };
                                     ?>
-                                    <span class="badge border rounded-pill px-2 py-1 fs-7 <?= $priorityClass; ?>">
-                                        <?= ucfirst(htmlspecialchars($task['priority'])); ?>
+                                    <span class="badge border rounded-pill px-2 py-1 fs-7 <?= $priorityBadge['class']; ?>">
+                                        <i class="bi bi-flag-fill <?= $priorityBadge['icon']; ?> me-1"></i><?= ucfirst(htmlspecialchars($task['priority'])); ?>
                                     </span>
                                 </div>
                                 
@@ -181,10 +181,10 @@
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <select class="form-select rounded-3" id="create_priority" name="priority">
-                                    <option value="low">Low</option>
-                                    <option value="medium" selected>Medium</option>
-                                    <option value="high">High</option>
+                                <select class="form-select rounded-3 priority-select-input" id="create_priority" name="priority">
+                                    <option value="low" class="priority-option-low">Low</option>
+                                    <option value="medium" class="priority-option-medium" selected>Medium</option>
+                                    <option value="high" class="priority-option-high">High</option>
                                 </select>
                                 <label for="create_priority">Priority</label>
                             </div>
@@ -228,10 +228,10 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="form-floating mb-3">
-                                <select class="form-select rounded-3" id="edit_priority" name="priority">
-                                    <option value="low">Low</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="high">High</option>
+                                <select class="form-select rounded-3 priority-select-input" id="edit_priority" name="priority">
+                                    <option value="low" class="priority-option-low">Low</option>
+                                    <option value="medium" class="priority-option-medium">Medium</option>
+                                    <option value="high" class="priority-option-high">High</option>
                                 </select>
                                 <label for="edit_priority">Priority</label>
                             </div>
