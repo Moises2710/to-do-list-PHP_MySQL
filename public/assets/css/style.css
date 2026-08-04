@@ -3,7 +3,7 @@
     --bg-gradient: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15), rgba(255, 255, 255, 0));
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
-    --sidebar-width: 270px;
+    --sidebar-width: 260px;
 }
 
 body {
@@ -17,6 +17,13 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 }
 
 /* Header Styling */
+#appLayoutWrapper {
+    display: flex !important;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
 .custom-header {
     height: 65px;
     background: rgba(255, 255, 255, 0.95);
@@ -67,23 +74,27 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 
 /* App Shell Sidebar Layout & Dynamic Movement */
 .app-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: var(--sidebar-width);
+    flex-shrink: 0;
     height: 100vh;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: sticky;
+    top: 0;
+    transition: margin-left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 4px 0 16px rgba(0, 0, 0, 0.02);
     z-index: 1030;
 }
 
-/* Sidebar Collapsed State */
-.sidebar-collapsed .app-sidebar {
-    transform: translateX(-100%);
+.app-content-column {
+    flex-grow: 1;
+    min-width: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.sidebar-collapsed .app-content-column {
-    margin-left: 0;
+/* Sidebar Collapsed State */
+.sidebar-collapsed .app-sidebar {
+    margin-left: calc(-1 * var(--sidebar-width));
 }
 
 /* Collapsed Header Brand & Expand Button */
