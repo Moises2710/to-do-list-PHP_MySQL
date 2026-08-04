@@ -225,13 +225,48 @@ select option.priority-option-high {
     font-weight: 600;
 }
 
-/* Flatpickr Custom Modern Theme Overrides */
+/* Flatpickr Custom Modern Spacious Theme Overrides */
 .flatpickr-calendar {
-    border-radius: 16px !important;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    width: 350px !important;
+    padding: 12px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.15), 0 10px 12px -5px rgba(0, 0, 0, 0.08) !important;
     border: 1px solid #e2e8f0 !important;
     font-family: var(--font-body) !important;
-    padding: 8px !important;
+    background: #ffffff !important;
+}
+
+.flatpickr-innerContainer {
+    width: 100% !important;
+}
+
+.flatpickr-rContainer {
+    width: 100% !important;
+}
+
+.flatpickr-days {
+    width: 326px !important;
+}
+
+.dayContainer {
+    width: 326px !important;
+    min-width: 326px !important;
+    max-width: 326px !important;
+    justify-content: space-around !important;
+}
+
+.flatpickr-day {
+    max-width: 44px !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    font-size: 0.95rem !important;
+    border-radius: 12px !important;
+}
+
+.flatpickr-weekday {
+    font-weight: 700 !important;
+    color: #64748b !important;
+    font-size: 0.9rem !important;
 }
 
 .flatpickr-day.selected, 
@@ -255,7 +290,7 @@ select option.priority-option-high {
     background: var(--primary-gradient) !important;
     border-color: #4f46e5 !important;
     font-weight: 600 !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
 }
 
 .flatpickr-day.today {
@@ -266,7 +301,7 @@ select option.priority-option-high {
 
 .flatpickr-day:hover {
     background: #f1f5f9 !important;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
 }
 
 .flatpickr-months .flatpickr-month {
