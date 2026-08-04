@@ -2,14 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
+use App\Models\Task;
 
 class DashboardController
 {
     /**
      * Render User Dashboard
+     * 
+     * @return void
      */
-    public function index()
+    public function index(): void
     {
         // Authentication Guard
         if (!isset($_SESSION['user_id'])) {
@@ -18,13 +20,18 @@ class DashboardController
             exit;
         }
 
+        $userId = (int) $_SESSION['user_id'];
         $pageTitle = "Dashboard - Coronado To do List";
-        
+
         $user = [
-            'id' => $_SESSION['user_id'],
+            'id' => $userId,
             'name' => $_SESSION['user_name'] ?? 'User',
             'email' => $_SESSION['user_email'] ?? '',
         ];
+
+        // Fetch user tasks & metrics
+        $tasks = Task::getByUserId($userId);
+        $metrics = Task::getMetrics($userId);
 
         ob_start();
         require __DIR__ . '/../Views/dashboard/index.php';
