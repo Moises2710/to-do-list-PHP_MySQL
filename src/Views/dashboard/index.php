@@ -72,15 +72,15 @@
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
             <h4 class="fw-bold mb-0 text-dark"><i class="bi bi-journal-text me-2 text-primary"></i> My Tasks</h4>
 
-            <div class="d-flex align-items-center gap-2">
-                <div class="btn-group btn-group-sm" role="group" aria-label="Task Filter">
-                    <button type="button" class="btn btn-primary task-filter-btn active" data-filter="all">All</button>
-                    <button type="button" class="btn btn-outline-secondary task-filter-btn" data-filter="pending">Pending</button>
-                    <button type="button" class="btn btn-outline-secondary task-filter-btn" data-filter="in_progress">In Progress</button>
-                    <button type="button" class="btn btn-outline-secondary task-filter-btn" data-filter="completed">Completed</button>
-                </div>
+            <div class="d-flex align-items-center gap-3 flex-shrink-0">
+                <select id="taskFilterSelect" class="form-select rounded-pill filter-select-input filter-select-all text-nowrap" style="min-width: 150px; font-weight: 600;">
+                    <option value="all" class="filter-option-all" selected>All Tasks</option>
+                    <option value="pending" class="filter-option-pending">Pending</option>
+                    <option value="in_progress" class="filter-option-in_progress">In Progress</option>
+                    <option value="completed" class="filter-option-completed">Completed</option>
+                </select>
 
-                <button class="btn btn-primary rounded-pill px-4 ms-2 fw-semibold" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+                <button class="btn btn-primary rounded-pill px-4 py-2 fw-semibold text-nowrap flex-shrink-0 shadow-sm" data-bs-toggle="modal" data-bs-target="#newTaskModal">
                     <i class="bi bi-plus-lg me-1"></i> Add Task
                 </button>
             </div>

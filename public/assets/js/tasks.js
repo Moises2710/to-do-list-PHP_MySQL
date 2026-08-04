@@ -275,19 +275,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Client-side Task Filter Tabs
-    const filterTabs = document.querySelectorAll('.task-filter-btn');
-    filterTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            filterTabs.forEach(t => t.classList.remove('active', 'btn-primary'));
-            filterTabs.forEach(t => t.classList.add('btn-outline-secondary'));
-
-            tab.classList.remove('btn-outline-secondary');
-            tab.classList.add('active', 'btn-primary');
-
-            const filter = tab.dataset.filter;
+    // Client-side Task Filter Select
+    const filterSelect = document.getElementById('taskFilterSelect');
+    if (filterSelect) {
+        filterSelect.addEventListener('change', (e) => {
+            const filter = e.target.value;
+            
+            // Update select background color dynamically
+            filterSelect.className = 'form-select form-select-sm rounded-pill filter-select-input filter-select-' + filter;
+            
             const taskCards = document.querySelectorAll('.task-card-item');
-
             taskCards.forEach(card => {
                 if (filter === 'all' || card.dataset.status === filter) {
                     card.style.display = 'block';
@@ -296,5 +293,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-    });
+    }
 });

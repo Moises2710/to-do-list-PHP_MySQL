@@ -141,6 +141,51 @@ select option.priority-option-high {
     font-weight: 600;
 }
 
+/* Dynamic Filter Select Input Background Colors */
+select.filter-select-input {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    padding-top: 0.45rem !important;
+    padding-bottom: 0.45rem !important;
+    padding-left: 1rem !important;
+    padding-right: 2.25rem !important;
+    font-size: 0.9rem !important;
+    cursor: pointer;
+}
+
+select.filter-select-input option {
+    padding: 8px 12px !important;
+    font-size: 0.95rem !important;
+}
+
+select.filter-select-input.filter-select-all {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    border-color: #cbd5e1 !important;
+}
+
+select.filter-select-input.filter-select-pending {
+    background-color: #fef3c7 !important;
+    color: #b45309 !important;
+    border-color: #fde68a !important;
+}
+
+select.filter-select-input.filter-select-in_progress {
+    background-color: #e0f2fe !important;
+    color: #0369a1 !important;
+    border-color: #bae6fd !important;
+}
+
+select.filter-select-input.filter-select-completed {
+    background-color: #dcfce7 !important;
+    color: #15803d !important;
+    border-color: #bbf7d0 !important;
+}
+
+select option.filter-option-all { color: #1e293b; background-color: #ffffff; }
+select option.filter-option-pending { color: #b45309; background-color: #fffbeb; }
+select option.filter-option-in_progress { color: #0369a1; background-color: #f0f9ff; }
+select option.filter-option-completed { color: #15803d; background-color: #f0fdf4; font-weight: 600; }
+
 /* Flatpickr Custom Modern Spacious Theme Overrides */
 .flatpickr-calendar {
     width: 350px !important;
