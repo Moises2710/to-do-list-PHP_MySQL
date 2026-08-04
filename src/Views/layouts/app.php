@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body class="bg-body-tertiary">
-    <div id="appLayoutWrapper" class="position-relative overflow-x-hidden min-vh-100">
+    <div id="appLayoutWrapper" class="d-flex position-relative overflow-x-hidden min-vh-100">
         <?php require __DIR__ . '/sidebar.php'; ?>
         <div class="d-flex flex-column app-content-column">
             <?php 
