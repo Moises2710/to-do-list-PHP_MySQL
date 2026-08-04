@@ -53,8 +53,8 @@
             </div>
             <div class="col-lg-6">
                 <div class="image-wrapper p-3 rounded-4 shadow-lg bg-white border border-light position-relative">
-                    <img src="/assets/images/cat_app_preview.jpg" 
-                         alt="Coronado To do List Productivity Cat Preview" 
+                    <img src="/assets/images/dashboard_preview.jpg" 
+                         alt="Coronado To do List Dashboard Preview" 
                          class="img-fluid rounded-3 app-preview-img w-100 shadow-sm">
                 </div>
             </div>
