@@ -13,7 +13,7 @@
         </div>
     </div>
 </section>
-<section class="description-section py-4 bg-light-subtle text-center">
+<section class="description-section py-4 bg-light-subtle text-center reveal-up">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -27,7 +27,7 @@
 <section class="functionality-section py-5">
     <div class="container py-3">
         <div class="row align-items-center g-5">
-            <div class="col-lg-6">
+            <div class="col-lg-6 reveal-left">
                 <div class="pe-lg-4">
                     <div class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-3 p-3 mb-3 shadow-sm feature-icon-box">
                         <i class="bi bi-journal-check fs-3"></i>
@@ -37,22 +37,22 @@
                         Save your task with our task button, set priorities, customize deadlines, and track your progress in real-time. Designed to keep your productivity simple, seamless, and intuitive every single day.
                     </p>
                     <div class="d-flex flex-column gap-3">
-                        <div class="d-flex align-items-center gap-3 feature-item p-2 rounded-3">
+                        <div class="d-flex align-items-center gap-3 feature-item p-2 rounded-3 reveal-left delay-1">
                             <i class="bi bi-check-circle-fill text-primary fs-4"></i>
                             <span class="fw-medium text-dark">Instant task creation with smart prioritization</span>
                         </div>
-                        <div class="d-flex align-items-center gap-3 feature-item p-2 rounded-3">
+                        <div class="d-flex align-items-center gap-3 feature-item p-2 rounded-3 reveal-left delay-2">
                             <i class="bi bi-check-circle-fill text-primary fs-4"></i>
                             <span class="fw-medium text-dark">Clean, distraction-free monolithic workflow</span>
                         </div>
-                        <div class="d-flex align-items-center gap-3 feature-item p-2 rounded-3">
+                        <div class="d-flex align-items-center gap-3 feature-item p-2 rounded-3 reveal-left delay-3">
                             <i class="bi bi-check-circle-fill text-primary fs-4"></i>
                             <span class="fw-medium text-dark">Accessible on all your devices anytime</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 reveal-right">
                 <div class="image-wrapper p-3 rounded-4 shadow-lg bg-white border border-light position-relative">
                     <img src="/assets/images/dashboard_preview.jpg" 
                          alt="To do List Dashboard Preview" 
@@ -63,3 +63,4 @@
     </div>
 </section>
 <script src="/assets/js/hero-particles.js"></script>
+<script src="/assets/js/scroll-reveal.js"></script>
