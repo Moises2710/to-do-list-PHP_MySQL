@@ -333,12 +333,17 @@ select option.filter-option-completed { color: #15803d; background-color: #f0fdf
     background: var(--bg-gradient);
 }
 
-.hero-title {
-    background: linear-gradient(135deg, #0f172a 0%, #312e81 60%, #4338ca 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.style-hero-animated {
+    background: #0f172a !important;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-title-animated {
     letter-spacing: -0.03em;
     line-height: 1.15;
+    text-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
 }
 
 .hero-badge {
