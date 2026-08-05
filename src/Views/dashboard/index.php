@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-    <div class="card border-0 shadow-sm rounded-4 p-4 bg-white mb-4">
+    <div class="card border-0 bg-transparent shadow-none mb-4">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
             <h4 class="fw-bold mb-0 text-dark"><i class="bi bi-journal-text me-2 text-primary"></i> My Tasks</h4>
 
@@ -88,7 +88,7 @@
             </div>
         </div>
         <?php if (empty($tasks)): ?>
-            <div class="text-center py-5 text-muted">
+            <div class="text-center py-5 text-muted bg-white rounded-4 border border-light-subtle shadow-sm p-4">
                 <i class="bi bi-check2-circle display-1 text-primary opacity-50 mb-3 d-block"></i>
                 <h5 class="fw-bold text-dark">No tasks created yet</h5>
                 <p class="mb-3">Save your task with our task button to start organizing your routine!</p>
