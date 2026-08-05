@@ -1,12 +1,12 @@
 # AGENTS.md - Developer & Agent Instructions
 
-This document defines the architecture, project structure, tech stack, dependencies, and development conventions for the **Coronado To do List** project. Any AI agent or developer contributing to this project must adhere to these guidelines.
+This document defines the architecture, project structure, tech stack, dependencies, and development conventions for the **To do List** project. Any AI agent or developer contributing to this project must adhere to these guidelines.
 
 ---
 
 ## 1. Project Overview
 
-- **Project Name**: Coronado To do List
+- **Project Name**: To do List
 - **Architecture**: Monolithic MVC (Model-View-Controller)
 - **Description**: A modern, monolithic web application for managing to-do lists, daily tasks, and personal productivity.
 
@@ -84,7 +84,7 @@ To Do List/
 docker compose up --build -d
 ```
 - **Web App URL**: `http://localhost:8000`
-- **MySQL Database**: `localhost:3306` (Database: `coronado_todo_db`, User: `root`, Password: `root_password`)
+- **MySQL Database**: `localhost:3306` (Database: `todo_list_db`, User: `root`, Password: `root_password`)
 
 ### Stop Application
 ```bash

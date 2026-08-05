@@ -1,5 +1,5 @@
 {
-    "name": "coronado/todo-list",
+    "name": "todo-list/app",
     "description": "Monolithic PHP MVC To Do List Web Application",
     "type": "project",
     "license": "MIT",

@@ -1,4 +1,4 @@
-# Coronado To do List 📝✨
+# To do List 📝✨
 
 A modern, full-stack monolithic MVC web application for managing tasks, daily productivity, and personal workflows. Built with PHP 8.2, MySQL 8.0, Apache, FastRoute, Bootstrap 5.3, Flatpickr, and Docker.
 
@@ -94,7 +94,7 @@ docker compose up --build -d
 ### 2. Access the Application
 - **Web App URL**: [http://localhost:8000](http://localhost:8000)
 - **MySQL Database**: `localhost:3306`
-  - **Database Name**: `coronado_todo_db`
+  - **Database Name**: `todo_list_db`
   - **Username**: `root`
   - **Password**: `root_password`
 

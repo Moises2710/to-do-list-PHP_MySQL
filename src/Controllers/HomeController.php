@@ -10,7 +10,7 @@ class HomeController
      */
     public function index()
     {
-        $pageTitle = "Coronado To do List - Organize Your Day";
+        $pageTitle = "To do List - Organize Your Day";
 
         // Output buffering to capture view
         ob_start();

@@ -8,7 +8,7 @@
                             <span class="brand-icon-wrapper rounded-3 d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
                                 <i class="bi bi-check2-square text-white fs-5"></i>
                             </span>
-                            <span class="fs-5 brand-text">Coronado To do List</span>
+                            <span class="fs-5 brand-text">To do List</span>
                         </a>
                     </div>
                 <?php else: ?>
@@ -16,7 +16,7 @@
                         <span class="brand-icon-wrapper rounded-3 d-flex align-items-center justify-content-center">
                             <i class="bi bi-check2-square fs-4 text-white"></i>
                         </span>
-                        <span class="fs-4 brand-text">Coronado To do List</span>
+                        <span class="fs-4 brand-text">To do List</span>
                     </a>
                 <?php endif; ?>
             </div>

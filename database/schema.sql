@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `coronado_todo_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `coronado_todo_db`;
+CREATE DATABASE IF NOT EXISTS `todo_list_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `todo_list_db`;
 
 -- Users Table
 CREATE TABLE IF NOT EXISTS `users` (

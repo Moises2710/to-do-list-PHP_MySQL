@@ -8,7 +8,7 @@
                             <i class="bi bi-person-plus-fill fs-3 text-white"></i>
                         </div>
                         <h2 class="fw-bold text-dark mb-1">Create Account</h2>
-                        <p class="text-muted">Join Coronado To do List and organize your daily life.</p>
+                        <p class="text-muted">Join To do List and organize your daily life.</p>
                     </div>
                     <?php if (!empty($error)): ?>
                         <div class="alert alert-danger alert-dismissible fade show rounded-3 mb-4" role="alert">

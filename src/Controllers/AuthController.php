@@ -16,7 +16,7 @@ class AuthController
             exit;
         }
 
-        $pageTitle = "Sign Up - Coronado To do List";
+        $pageTitle = "Sign Up - To do List";
         $error = $_SESSION['flash_error'] ?? null;
         $old = $_SESSION['flash_old'] ?? [];
         
@@ -104,7 +104,7 @@ class AuthController
             exit;
         }
 
-        $pageTitle = "Sign In - Coronado To do List";
+        $pageTitle = "Sign In - To do List";
         $error = $_SESSION['flash_error'] ?? null;
         $success = $_SESSION['flash_success'] ?? null;
         $old = $_SESSION['flash_old'] ?? [];

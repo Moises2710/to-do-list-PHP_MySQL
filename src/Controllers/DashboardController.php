@@ -21,7 +21,7 @@ class DashboardController
         }
 
         $userId = (int) $_SESSION['user_id'];
-        $pageTitle = "Dashboard - Coronado To do List";
+        $pageTitle = "Dashboard - To do List";
 
         $user = [
             'id' => $userId,

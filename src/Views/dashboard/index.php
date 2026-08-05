@@ -307,7 +307,7 @@
                     </div>
                     <div class="d-flex justify-content-between mb-0">
                         <span class="text-muted">Workspace:</span>
-                        <span class="fw-semibold text-dark">Coronado To do List</span>
+                        <span class="fw-semibold text-dark">To do List</span>
                     </div>
                 </div>
             </div>
@@ -321,7 +321,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow-lg">
             <div class="modal-header border-bottom-0 pb-0">
-                <h5 class="modal-title fw-bold" id="helpModalLabel"><i class="bi bi-question-circle-fill me-2 text-primary"></i> Coronado Support & Help</h5>
+                <h5 class="modal-title fw-bold" id="helpModalLabel"><i class="bi bi-question-circle-fill me-2 text-primary"></i> Support & Help</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body py-4">

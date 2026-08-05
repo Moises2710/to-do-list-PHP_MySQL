@@ -3,14 +3,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: coronado_todo_web
+    container_name: todo_web
     restart: always
     ports:
       - "8000:80"
     environment:
       - DB_HOST=db
       - DB_PORT=3306
-      - DB_NAME=coronado_todo_db
+      - DB_NAME=todo_list_db
       - DB_USER=root
       - DB_PASSWORD=root_password
     volumes:
@@ -21,13 +21,13 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: coronado_todo_db
+    container_name: todo_db
     restart: always
     ports:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_DATABASE=coronado_todo_db
+      - MYSQL_DATABASE=todo_list_db
     volumes:
       - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
       - db_data:/var/lib/mysql
