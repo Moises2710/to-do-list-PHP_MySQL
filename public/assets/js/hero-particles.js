@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let height = 0;
     let particles = [];
     let mouse = { x: -1000, y: -1000, isHovering: false };
-    let colorAngle = 0;
+
+    // Brand Checkbox Palette (Indigo #4f46e5, Purple #7c3aed, Electric Blue #2563eb)
+    const brandColors = [
+        { h: 243, s: 75, l: 59, rgb: '79, 70, 229' },  // Indigo #4f46e5
+        { h: 262, s: 83, l: 58, rgb: '124, 58, 237' }, // Purple #7c3aed
+        { h: 217, s: 91, l: 60, rgb: '37, 99, 235' }   // Electric Blue #2563eb
+    ];
 
     function resizeCanvas() {
         width = heroSection.offsetWidth;
@@ -26,14 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
         reset(initial = false) {
             this.x = Math.random() * width;
             this.y = initial ? Math.random() * height : height + 10;
-            this.radius = Math.random() * 2.5 + 0.8;
+            this.radius = Math.random() * 2.8 + 1.2;
             this.speedY = -(Math.random() * 0.5 + 0.2);
-            this.speedX = (Math.random() - 0.5) * 0.4;
-            this.alpha = Math.random() * 0.6 + 0.2;
+            this.speedX = (Math.random() - 0.5) * 0.5;
+            this.alpha = Math.random() * 0.5 + 0.3;
             this.maxAlpha = this.alpha;
-            this.fadeSpeed = Math.random() * 0.005 + 0.002;
-            this.hue = Math.floor(Math.random() * 60) + 240; // 240-300: Violet to Indigo / Cyan
             this.pulse = Math.random() * Math.PI;
+
+            // Pick a brand color from the checkbox palette
+            this.colorScheme = brandColors[Math.floor(Math.random() * brandColors.length)];
         }
 
         update() {
@@ -49,15 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dx = mouse.x - this.x;
                 const dy = mouse.y - this.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                const maxDist = 140;
+                const maxDist = 160;
 
                 if (dist < maxDist) {
                     const force = (maxDist - dist) / maxDist;
                     const angle = Math.atan2(dy, dx);
                     // Push away slightly with magnetic swirl
-                    this.x -= Math.cos(angle) * force * 3;
-                    this.y -= Math.sin(angle) * force * 3;
-                    this.alpha = Math.min(1, this.alpha + force * 0.5);
+                    this.x -= Math.cos(angle) * force * 3.5;
+                    this.y -= Math.sin(angle) * force * 3.5;
+                    this.alpha = Math.min(1, this.alpha + force * 0.6);
                 }
             }
 
@@ -70,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `hsla(${this.hue}, 85%, 75%, ${this.alpha})`;
-            ctx.shadowColor = `hsla(${this.hue}, 90%, 65%, 0.8)`;
-            ctx.shadowBlur = 8;
+            ctx.fillStyle = `hsla(${this.colorScheme.h}, ${this.colorScheme.s}%, ${this.colorScheme.l}%, ${this.alpha})`;
+            ctx.shadowColor = `rgba(${this.colorScheme.rgb}, 0.6)`;
+            ctx.shadowBlur = mouse.isHovering ? 10 : 4;
             ctx.fill();
             ctx.shadowBlur = 0; // Reset shadow blur
         }
@@ -80,41 +87,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Generate Dust Particles
     function initParticles() {
-        const particleCount = Math.min(80, Math.floor((width * height) / 9000));
+        const particleCount = Math.min(85, Math.floor((width * height) / 8500));
         particles = [];
         for (let i = 0; i < particleCount; i++) {
             particles.push(new DustParticle());
         }
     }
 
-    // Dynamic Color Shift Gradient
-    function drawBackgroundGradient() {
-        colorAngle = (colorAngle + 0.2) % 360;
-        const color1 = `hsl(${(240 + Math.sin(colorAngle * 0.01) * 30)}, 70%, 12%)`;
-        const color2 = `hsl(${(270 + Math.cos(colorAngle * 0.01) * 30)}, 65%, 8%)`;
-        const color3 = `hsl(${(210 + Math.sin(colorAngle * 0.015) * 40)}, 80%, 15%)`;
-
-        const grad = ctx.createLinearGradient(0, 0, width, height);
-        grad.addColorStop(0, color1);
-        grad.addColorStop(0.5, color2);
-        grad.addColorStop(1, color3);
-
-        ctx.fillStyle = grad;
+    // Render White Background & Cursor Spotlight
+    function drawBackground() {
+        // Pure White Background
+        ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, width, height);
 
-        // Render Cursor Glow Light when mouse is hovering
+        // Render soft subtle brand glow near mouse cursor on hover
         if (mouse.isHovering) {
             const radialGrad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 220);
-            radialGrad.addColorStop(0, 'rgba(124, 58, 237, 0.35)');
-            radialGrad.addColorStop(0.5, 'rgba(79, 70, 229, 0.15)');
-            radialGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            radialGrad.addColorStop(0, 'rgba(124, 58, 237, 0.12)');
+            radialGrad.addColorStop(0.5, 'rgba(79, 70, 229, 0.05)');
+            radialGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
             ctx.fillStyle = radialGrad;
             ctx.fillRect(0, 0, width, height);
         }
     }
 
-    // Connect close dust particles with glowing light threads near cursor
+    // Connect close dust particles with brand colored light threads near cursor
     function drawConstellation() {
         if (!mouse.isHovering) return;
 
@@ -124,12 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const dy = mouse.y - p1.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
-            if (dist < 120) {
+            if (dist < 130) {
                 ctx.beginPath();
                 ctx.moveTo(p1.x, p1.y);
                 ctx.lineTo(mouse.x, mouse.y);
-                ctx.strokeStyle = `rgba(167, 139, 250, ${(1 - dist / 120) * 0.4})`;
-                ctx.lineWidth = 1;
+                ctx.strokeStyle = `rgba(124, 58, 237, ${(1 - dist / 130) * 0.35})`;
+                ctx.lineWidth = 1.2;
                 ctx.stroke();
             }
         }
@@ -137,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
-        drawBackgroundGradient();
+        drawBackground();
 
         particles.forEach(p => {
             p.update();

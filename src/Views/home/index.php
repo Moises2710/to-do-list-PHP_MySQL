@@ -3,10 +3,10 @@
     <div class="container py-5 position-relative z-1">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <span class="badge bg-white bg-opacity-15 text-white border border-white border-opacity-25 px-3 py-2 rounded-pill fs-6 mb-3 hero-badge shadow-sm">
-                    <i class="bi bi-stars me-1 text-warning"></i> Modern Productivity Platform
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill fs-6 mb-3 hero-badge shadow-sm">
+                    <i class="bi bi-stars me-1 text-primary"></i> Modern Productivity Platform
                 </span>
-                <h1 class="display-3 fw-bold tracking-tight hero-title-animated mb-3 text-white">
+                <h1 class="display-3 fw-bold tracking-tight hero-title-animated mb-3">
                     You have the knowledge and time, We just save it
                 </h1>
             </div>

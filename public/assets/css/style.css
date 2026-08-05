@@ -334,16 +334,18 @@ select option.filter-option-completed { color: #15803d; background-color: #f0fdf
 }
 
 .style-hero-animated {
-    background: #0f172a !important;
+    background: #ffffff !important;
     min-height: 380px;
     display: flex;
     align-items: center;
 }
 
 .hero-title-animated {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 75%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     letter-spacing: -0.03em;
     line-height: 1.15;
-    text-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
 }
 
 .hero-badge {
