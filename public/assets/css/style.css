@@ -101,6 +101,41 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     border: 1px solid #fca5a5 !important;
 }
 
+/* Dashboard Hero Banner Styling */
+.dashboard-hero-section {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 35%, #4338ca 70%, #2563eb 100%) !important;
+    box-shadow: 0 12px 28px -6px rgba(67, 56, 202, 0.35) !important;
+}
+
+.hero-add-task-btn {
+    transition: all 0.25s ease;
+}
+
+.hero-add-task-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* User Avatar Dropdown Button & Menu Styling */
+.user-avatar-btn {
+    transition: all 0.2s ease;
+}
+
+.user-avatar-btn:hover, .user-avatar-btn:focus {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.user-dropdown-menu {
+    min-width: 220px;
+    animation: fadeIn 0.2s ease;
+}
+
+.user-dropdown-menu .dropdown-item:hover {
+    background-color: #f1f5f9 !important;
+}
+
 /* Dynamic Priority Select Input Background Colors */
 select.priority-select-input {
     transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;

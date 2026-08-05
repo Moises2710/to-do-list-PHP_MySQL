@@ -286,11 +286,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const taskCards = document.querySelectorAll('.task-card-item');
             taskCards.forEach(card => {
-                if (filter === 'all' || card.dataset.status === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                const matches = (filter === 'all' || card.dataset.status === filter);
+                card.classList.toggle('d-none', !matches);
             });
         });
     }

@@ -1,15 +1,17 @@
 <div class="container-fluid px-4 px-lg-5 py-4">
     <div id="alertContainer" class="mb-4"></div>
-    <div class="card border-0 shadow-sm rounded-4 text-white mb-4 p-4 position-relative overflow-hidden" style="background: var(--primary-gradient) !important;">
-        <div class="d-flex justify-content-between align-items-center position-relative z-1">
+    <div class="card border-0 shadow-lg rounded-4 text-white mb-4 p-4 p-lg-5 position-relative overflow-hidden dashboard-hero-section" style="background: var(--primary-gradient) !important;">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 position-relative z-1">
             <div>
-                <span class="badge bg-white text-primary rounded-pill px-3 py-2 fw-bold mb-2">Personal Workspace</span>
-                <h1 class="display-5 fw-bold mb-1">Welcome back, <?= htmlspecialchars($user['name']); ?>!</h1>
+                <span class="badge bg-white text-primary rounded-pill px-3 py-2 fw-bold mb-3 shadow-sm">
+                    <i class="bi bi-stars me-1 text-warning"></i> Personal Workspace
+                </span>
+                <h1 class="display-5 fw-bold mb-2">Welcome back, <?= htmlspecialchars($user['name']); ?>!</h1>
                 <p class="mb-0 text-white-50 fs-5"><i class="bi bi-envelope me-2"></i><?= htmlspecialchars($user['email']); ?></p>
             </div>
-            <div class="d-none d-md-block text-end">
-                <button class="btn btn-light btn-lg rounded-pill px-4 fw-bold shadow-sm text-primary" data-bs-toggle="modal" data-bs-target="#newTaskModal">
-                    <i class="bi bi-plus-circle-fill me-2"></i> Add New Task
+            <div class="flex-shrink-0">
+                <button class="btn btn-light btn-lg rounded-pill px-4 py-3 fw-bold shadow-sm text-primary hero-add-task-btn" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+                    <i class="bi bi-plus-circle-fill me-2 fs-5"></i> Add New Task
                 </button>
             </div>
         </div>
@@ -95,64 +97,66 @@
                 </button>
             </div>
         <?php else: ?>
-            <div id="taskListContainer" class="d-flex flex-column gap-3">
+            <div id="taskListContainer" class="row g-3 g-xl-4">
                 <?php foreach ($tasks as $task): ?>
-                    <div id="task-card-<?= $task['id']; ?>" 
-                         class="task-card-item card border border-light-subtle rounded-3 p-3 transition-all status-<?= htmlspecialchars($task['status']); ?>" 
-                         data-status="<?= htmlspecialchars($task['status']); ?>">
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-                            <div class="flex-grow-1">
-                                <div class="d-flex align-items-center gap-2 mb-1">
-                                    <h5 class="fw-bold text-dark mb-0"><?= htmlspecialchars($task['title']); ?></h5>
+                    <div class="col-md-6 task-card-col task-card-item status-<?= htmlspecialchars($task['status']); ?>" data-status="<?= htmlspecialchars($task['status']); ?>">
+                        <div id="task-card-<?= $task['id']; ?>" 
+                             class="card border border-light-subtle rounded-4 p-3 h-100 shadow-sm transition-all">
+                            <div class="d-flex flex-column justify-content-between h-100 gap-3">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                                        <h5 class="fw-bold text-dark mb-0 text-break"><?= htmlspecialchars($task['title']); ?></h5>
+                                        
+                                        <?php 
+                                            $priorityBadge = match($task['priority']) {
+                                                'high' => ['class' => 'priority-badge-high', 'icon' => 'text-danger'],
+                                                'low' => ['class' => 'priority-badge-low', 'icon' => 'text-secondary'],
+                                                default => ['class' => 'priority-badge-medium', 'icon' => 'text-warning-emphasis'],
+                                            };
+                                        ?>
+                                        <span class="badge border rounded-pill px-2 py-1 fs-7 flex-shrink-0 <?= $priorityBadge['class']; ?>">
+                                            <i class="bi bi-flag-fill <?= $priorityBadge['icon']; ?> me-1"></i><?= ucfirst(htmlspecialchars($task['priority'])); ?>
+                                        </span>
+                                    </div>
                                     
-                                    <?php 
-                                        $priorityBadge = match($task['priority']) {
-                                            'high' => ['class' => 'priority-badge-high', 'icon' => 'text-danger'],
-                                            'low' => ['class' => 'priority-badge-low', 'icon' => 'text-secondary'],
-                                            default => ['class' => 'priority-badge-medium', 'icon' => 'text-warning-emphasis'],
-                                        };
-                                    ?>
-                                    <span class="badge border rounded-pill px-2 py-1 fs-7 <?= $priorityBadge['class']; ?>">
-                                        <i class="bi bi-flag-fill <?= $priorityBadge['icon']; ?> me-1"></i><?= ucfirst(htmlspecialchars($task['priority'])); ?>
-                                    </span>
+                                    <?php if (!empty($task['description'])): ?>
+                                        <p class="text-muted mb-2 fs-6 text-break"><?= htmlspecialchars($task['description']); ?></p>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($task['due_date'])): ?>
+                                        <small class="text-muted d-block"><i class="bi bi-calendar-event me-1"></i> Due: <?= htmlspecialchars($task['due_date']); ?></small>
+                                    <?php endif; ?>
                                 </div>
-                                
-                                <?php if (!empty($task['description'])): ?>
-                                    <p class="text-muted mb-2 fs-6"><?= htmlspecialchars($task['description']); ?></p>
-                                <?php endif; ?>
 
-                                <?php if (!empty($task['due_date'])): ?>
-                                    <small class="text-muted"><i class="bi bi-calendar-event me-1"></i> Due: <?= htmlspecialchars($task['due_date']); ?></small>
-                                <?php endif; ?>
-                            </div>
+                                <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                                    <select class="form-select form-select-sm rounded-pill task-status-select" data-task-id="<?= $task['id']; ?>" style="min-width: 130px;">
+                                        <option value="pending" <?= $task['status'] === 'pending' ? 'selected' : ''; ?>>Pending</option>
+                                        <option value="in_progress" <?= $task['status'] === 'in_progress' ? 'selected' : ''; ?>>In Progress</option>
+                                        <option value="completed" <?= $task['status'] === 'completed' ? 'selected' : ''; ?>>Completed</option>
+                                    </select>
 
-                            <div class="d-flex align-items-center gap-2">
-                                <select class="form-select form-select-sm rounded-pill task-status-select" data-task-id="<?= $task['id']; ?>" style="min-width: 140px;">
-                                    <option value="pending" <?= $task['status'] === 'pending' ? 'selected' : ''; ?>>Pending</option>
-                                    <option value="in_progress" <?= $task['status'] === 'in_progress' ? 'selected' : ''; ?>>In Progress</option>
-                                    <option value="completed" <?= $task['status'] === 'completed' ? 'selected' : ''; ?>>Completed</option>
-                                </select>
-
-                                <button class="btn btn-sm btn-outline-primary rounded-circle edit-task-btn" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#editTaskModal"
-                                        data-task-id="<?= $task['id']; ?>"
-                                        data-task-title="<?= htmlspecialchars($task['title']); ?>"
-                                        data-task-description="<?= htmlspecialchars($task['description'] ?? ''); ?>"
-                                        data-task-priority="<?= htmlspecialchars($task['priority']); ?>"
-                                        data-task-status="<?= htmlspecialchars($task['status']); ?>"
-                                        data-task-due-date="<?= htmlspecialchars($task['due_date'] ?? ''); ?>"
-                                        title="Edit Task">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </button>
-
-                                <button class="btn btn-sm btn-outline-danger rounded-circle delete-task-btn" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#deleteTaskModal"
-                                        data-task-id="<?= $task['id']; ?>"
-                                        title="Delete Task">
-                                    <i class="bi bi-trash-fill"></i>
-                                </button>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <button class="btn btn-sm btn-outline-primary rounded-circle edit-task-btn" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#editTaskModal"
+                                                data-task-id="<?= $task['id']; ?>"
+                                                data-task-title="<?= htmlspecialchars($task['title']); ?>"
+                                                data-task-description="<?= htmlspecialchars($task['description'] ?? ''); ?>"
+                                                data-task-priority="<?= htmlspecialchars($task['priority']); ?>"
+                                                data-task-due-date="<?= htmlspecialchars($task['due_date'] ?? ''); ?>"
+                                                title="Edit Task">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger rounded-circle delete-task-btn" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#deleteTaskModal"
+                                                data-task-id="<?= $task['id']; ?>"
+                                                data-task-title="<?= htmlspecialchars($task['title']); ?>"
+                                                title="Delete Task">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -279,6 +283,78 @@
                 <button type="button" id="confirmDeleteBtn" class="btn btn-danger rounded-pill px-4 fw-bold">
                     <i class="bi bi-trash-fill me-1"></i> Delete Task
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold" id="profileModalLabel"><i class="bi bi-person-circle me-2 text-primary"></i> User Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-4 text-center">
+                <div class="user-avatar-circle bg-primary text-white rounded-circle mx-auto d-flex align-items-center justify-content-center fw-bold display-6 mb-3 shadow-sm" style="width: 80px; height: 80px;">
+                    <?= strtoupper(substr($user['name'] ?? 'U', 0, 1)); ?>
+                </div>
+                <h4 class="fw-bold text-dark mb-1"><?= htmlspecialchars($user['name']); ?></h4>
+                <p class="text-muted mb-4"><?= htmlspecialchars($user['email']); ?></p>
+                <div class="p-3 bg-light rounded-3 text-start border">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Account Status:</span>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">Active</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-0">
+                        <span class="text-muted">Workspace:</span>
+                        <span class="fw-semibold text-dark">Coronado To do List</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-top-0 pt-0 justify-content-center">
+                <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h5 class="modal-title fw-bold" id="helpModalLabel"><i class="bi bi-question-circle-fill me-2 text-primary"></i> Coronado Support & Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body py-4">
+                <div class="d-flex align-items-start gap-3 mb-3">
+                    <div class="p-2 bg-primary-subtle text-primary rounded-3">
+                        <i class="bi bi-plus-circle fs-4"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold text-dark mb-1">Creating & Editing Tasks</h6>
+                        <p class="small text-muted mb-0">Click "+ Add Task" to create a task with optional description, priority (Low, Medium, High), and due date with Flatpickr calendar.</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-start gap-3 mb-3">
+                    <div class="p-2 bg-success-subtle text-success rounded-3">
+                        <i class="bi bi-funnel fs-4"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold text-dark mb-1">Filtering Tasks</h6>
+                        <p class="small text-muted mb-0">Use the status filter dropdown next to "My Tasks" to view All, Pending, In Progress, or Completed tasks.</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-start gap-3">
+                    <div class="p-2 bg-info-subtle text-info rounded-3">
+                        <i class="bi bi-shield-check fs-4"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold text-dark mb-1">Data Persistence</h6>
+                        <p class="small text-muted mb-0">All changes update instantly in your secure MySQL database via PHP backend API endpoints.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-top-0 pt-0 justify-content-center">
+                <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal">Got it!</button>
             </div>
         </div>
     </div>
