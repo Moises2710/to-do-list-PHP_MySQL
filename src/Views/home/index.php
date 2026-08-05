@@ -13,11 +13,11 @@
         </div>
     </div>
 </section>
-<section class="description-section py-4 bg-light-subtle text-center reveal-up">
+<section class="description-section py-5 text-center reveal-up">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <p class="lead text-secondary mb-0 fs-4 description-text">
+            <div class="col-lg-9">
+                <p class="lead text-white mb-0 fs-4 fw-medium description-text">
                     With this app you save your time, organize your daily routine effortlessly, eliminate stress, and keep your focus on what truly matters to reach your goals.
                 </p>
             </div>
